@@ -1,0 +1,28 @@
+Create Students table
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(100) NOT NULL,
+    address TEXT,
+    date_of_birth DATE,
+    phone_number VARCHAR(20),
+    email VARCHAR(100),
+    admission_date DATE,
+    performance DECIMAL(5, 2),
+    attendance DECIMAL(5, 2)
+);
+
+-- Create Departments table
+CREATE TABLE Departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL,
+    department_head VARCHAR(100)
+);
+
+-- Create Student_Departments table for managing relationships
+CREATE TABLE Student_Departments (
+    student_id INT,
+    department_id INT,
+    PRIMARY KEY (student_id, department_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (department_id) REFERENCES Departments(department_id)
+);
